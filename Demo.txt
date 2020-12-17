@@ -1,0 +1,353 @@
+TestSetServletNew.java
+
+ExecutorServlet.java
+
+v2/runresult.jsp
+
+200  200(160)
+
+VSIT3 RBV_FX_Regression_Pack_01
+
+http://192.168.2.39:7070/TenjinWeb/
+
+https://yethi-my.sharepoint.com/:x:/g/personal/prem_kg_yethi_in/Ef0Q5LAI_hJDj7ugkQYRprMBvkqjXF91zDpupK2tIVc7AA?rtime=n5AZJ25Y2Eg
+
+8037 -->kiran/123456789 && saikiran/1234567890
+
+http://localhost:8040/TenjinWeb/ -->kiran/1234567890
+
+
+
+http://localhost:8012/TenjinWeb/ --->sai/tenjin@1234  -->E:/issues Check
+
+
+
+http://localhost:8015/TenjinWeb/ --->sai/Saikiran   -->MyPractice Jagadish API
+
+
+http://localhost:8011/TenjinWeb/ -->Issues_WS -->BSI Issue -->SaiKiran/123456789        
+
+
+
+http://192.168.0.15:1991/TenjinWeb/ -->Server URL    demo/tenjin@123
+
+
+
+c:\Users\yourPCName\XSD\Api.wsdl
+
+Ex:
+C:\Users\Saikiran.t\XSD\SARIEXfer.wsdl
+
+
+
+882183t
+Vd#405040
+
+
+ANDROID_HOME
+
+
+Q) India --> indIa
+String s = "India";
+        String c1 = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'I' && Character.isUpperCase(s.charAt(i))) {
+                c1 += String.valueOf(Character.toLowerCase(s.charAt(i)));
+            } else if (s.charAt(i) == 'i' && Character.isLowerCase(s.charAt(i))) {
+                c1 += String.valueOf(Character.toUpperCase(s.charAt(i)));
+            } else {
+                c1 += s.charAt(i);
+
+ 
+
+            }
+        }
+        System.out.println(c1);
+
+Read Data From Formula Cell:
+*****************************
+class ReadDataFromFormulaCell
+{
+PSVM(String[] args)
+{
+XSSFWorkbook wb=new XSSFWorkbook(file);
+XSSFSheet sh=wb.getSheet("Sheet1");
+int rows=sh.getLastRowNum();
+int cols=sh.getRow(0).getLastCellNum();
+
+for(int i=0;i<=rows;i++)
+{
+	XSSFRow rw=sh.getRow(i);
+	
+for(int j=0;j<cols;j++)
+{
+	XSSFCell cel=rw.getCell(j);
+
+	switch(cel.getCellType())
+{
+case STRING:
+	System.out.print(cel.getStringCellValue());
+	break;
+case NUMERIC:
+	System.out.print(cel.getNumericCellValue());
+	break;
+case BOOLEAN:
+	System.out.print(cel.getBooleanCellValue());
+	break;
+case FORMULA:
+	System.out.print(cel.getNumericCellValue());
+	break;
+}
+System.out.print("|");
+}
+System.out.println();
+}
+
+}
+}
+
+EX: Write Formula Cell
+***********************
+class
+{
+PSVM(String[] args)
+{
+XSSFWorkbook wb=new XSSFWorkbook();
+XSSFSheet sh=wb.createSheet("numbers");
+
+XSSFRow rw= sh.createRow(0);
+
+rw.createCell(0).setCellValue(10);
+rw.createCell(1).setCellValue(20);
+rw.createCell(2).setCellValue(30);
+
+rw.createCell(3).setCellFormula("A1*B1*C1");
+
+FileOutputStream fos=new FileOutputStream("path");
+wb.write(fos);
+fos.close();
+}
+}
+
+Ex: Write Formula Cell2
+************************
+class
+{
+PSVM(String[] args)
+{
+String path="  ";
+FileInputStream fis=new FileInputStream(path);
+XSSFWorkbook wb=new XSSFWorkbook(fis);
+XSSFSheet sh=wb.getSheetAt(0);
+
+sh.getRow(7(rownum)).getCell(2(celno)).setcellFormula("SUM(C2:C6)");
+fis.close();
+FileOutputStream fos=new FileOutputStream(path);
+wb.write(fos);
+
+wb.close();
+fos.close();
+
+}
+}
+
+How to read the data from password protected Excel?
+class passwordProtectedCell
+{
+PSVM(String[] args)
+{
+FileInputStream fis=new FileInputStream("file name");
+String password="test123";
+
+XSSFWorkbook wb=(XSSFWorkbook)WorkbookFactory.create(fis,password);
+XSSFSheet sh=wb.getSheet(0);
+
+Iterator<Row> iterator=sh.iterator();
+while(iterator.hasNext())
+{
+Row nextrow=iterator.next();
+Iterator<Cell> cellit=nextRow.cellIterator();
+
+while(cellIterator.hasNext())
+{
+Cell cel=cellIterator.next();
+
+switch(cel.getCellType())
+{
+case NUMERIC: System.out.print(cel.getNumericCellValue());break;
+case STRING: System.out.print(cel.getStringCellValue());break;
+case BOOLEAN: System.out.print(cel.getNumericCellValue());break;
+case FORMULA: System.out.print(cel.getNumericCellValue());break;
+}
+system.out.print("|");
+}
+system.out.println();
+}
+wb.close();
+fis.close();
+}
+}
+
+How To Fill BackGround and Foreground colours into cell?
+
+class FormatingCellColour
+{
+PSVM(String []args)
+{
+XSSFWorkbook wb=new XSSFWorkbook();
+XSSFSheet sh=wb.createSheet("sheet1");
+
+XSSFRow rw=sh.createRow(1);
+
+// setting Background color
+
+XSSFCellStyle style=wb.createCellStyle();
+
+style.setFillBackgroundColor(IndexColors.BRIGHT_GREEN.getIndex());
+style.setFillPattern(FillPatternType.BIG_SPOTS);
+
+XSSFCell cel=rw.createcell(1);
+cel.setCellValue("SaiKiran);
+cel.setCellStyle(style);
+
+//setting Foreground colour
+
+style=wb.createCellStyle();
+style.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+style.setFillPattern(FillPatternType.SOILD_FOREGROUND);
+
+cel=rw.createCell(2);
+cel.setCellValue("Kiran");
+cel.setCellStyle(style);
+
+FileOutputStream fos=new FileOutputStream("your path");
+
+wb.write(fos);
+wb.close();
+fos.close();
+
+}
+}
+
+
+Write the Data from HashMap to Excel
+
+class HashMmaptoExcel
+{
+PSVM(String[] args)
+{
+XSSFWorkbook wb=new XSSFWorkbook();
+XSSFSheet sh=wb.createSheet("Employee data");
+
+Map<String,String> m=new HashMap<String,String);
+m.put("101", "sai");
+m.put("102", "kiran");
+m.put("103", "talanki");
+m.put("104", "sai kiran");
+m.put("105","Talanki sai");
+
+int rowno=0;
+for(Map.Entry entry:m.entrySet())
+{
+XSSFRow rw=sh.createRow(rowno++);
+
+rw.createCell(0).SetCellValue((String)entry.getKey());
+rw.createCell(0).SetCellValue((String)entry.getValue());
+}
+FileoutputStream fos=new FileoutputStream("path of the file");
+
+wb.write(fos);
+fos.close();
+System.out.println("Success");
+}
+}
+
+Read the data from Excel and store in HASHMAP?
+
+Class ExcelToHashMap
+{
+PSVM(String[] args)
+{
+FileInputStream fis=new FileInputStream("path of the file");
+XSSFWorkbook wb=new XSSFWorkbook(fis);
+
+XSSFSheet sh=wb.getSheet("Employeee data");
+int rows=sh.getLastRowNum();
+
+HashMap<String, String> map=new HashMap<String, String>();
+
+//Reading data from excel to hashmap
+
+for(int r=0;r<rows;r++)
+{
+String key=sh.getRow(r).getCell(0).getStringCellValue();
+String value=sh.getRow(r).getCell(1).GetStringCellValue();
+
+map.put(key, value);
+}
+
+//Read data from HashMap
+
+for(Map.Entry entry:map.entrySet())
+{
+syso(entry.getKey()+" : "+entry.getValue());
+}
+
+}
+}
+
+How to Read data from MySQL Database & Write into Excel
+class DatabasetoExcel
+{
+PSVM(String[] args) download mysql driver
+{
+
+//connect to the database
+
+Connection con=DriverManager.getConnection("jdbc server url", "root", "root");
+
+//Statement / Query
+
+Statement stmt=con.createStatement();
+ResultSet rs=stmt.executeQuery("select * from employees");
+
+//Excel
+
+XSSFWorkbook wb=new XSSFWorkbook();
+XSSFSheet sh=wb.createSheet("location data");
+
+XSSFRow rw=sh.createRow(0);
+rw.createCell(0).setCellValue("  ");
+rw.createCell(1).setCellValue("  ");
+rw.createCell(2).setCellValue("  ");
+rw.createCell(3).setCellValue("  ");
+rw.createCell(4).setCellValue("  ");
+
+int r=1;
+
+while(rs.next())
+{
+String st=rs.getString("mention heading name");
+
+if you have integer
+
+Double doub=rs.getDouble("mention that name);
+
+rw=sh.createRow(r++);
+
+rw.createCell(0).setCellvalue(st);
+rw.createCell(1).setCellvalue(db);
+}
+
+FileOutputStream fos=new FileOutputStream("file path");
+wb.write(fos);
+wb.close();
+fos.close();
+con.close();
+
+syso("done");
+}
+}
+
+
+Learn from 9 Pending
